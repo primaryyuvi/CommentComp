@@ -12,6 +12,8 @@ app.use(cors());
 
 app.post("/send", async (req, res) => {
   const { to, notificationBody } = req.body;
+  console.log(to, notificationBody);
+  res.json({ message: "Notification sent successfully" , to, notificationBody});
   try {
     const result = await sendFcmNotification(to, notificationBody);
     res.status(200).json({ message: "Notification sent successfully", result: result });
