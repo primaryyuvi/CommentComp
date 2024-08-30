@@ -1,11 +1,14 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require('cors');
 const {
     sendFcmNotification,
 } = require("./notificationLogic");
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors());
+
 
 app.post("/send", async (req, res) => {
   const { to, notificationBody } = req.body;
